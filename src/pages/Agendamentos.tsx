@@ -328,7 +328,7 @@ function SidePanel({
           <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
             Horário
           </span>
-          <span className="text-[11px] text-amber-400">07:00 - 20:00</span>
+          <span className="text-[11px] text-amber-400">06:00 - 22:00</span>
         </div>
         <div className="grid grid-cols-6 gap-1.5">
           {WORK_HOURS.map((h) => {

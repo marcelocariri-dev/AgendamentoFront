@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select";
 import { useLocais } from "@/hooks/useLocais";
 import { useCreateAgendamento } from "@/hooks/useAgendamentos";
-
+import type { StatusAgendamento } from "@/types";
 export default function NovoAgendamento() {
   const navigate = useNavigate();
   const { data: locaisResp } = useLocais({ ativo: "1", perpage: 100 });
@@ -26,8 +26,10 @@ export default function NovoAgendamento() {
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFinal, setHoraFinal] = useState("");
   const [observacoes, setObservacoes] = useState("");
-
+  const [status, setStatus] = useState<StatusAgendamento>("pendente");
   const locais = locaisResp?.data ?? [];
+
+
 
   async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,6 +47,7 @@ export default function NovoAgendamento() {
         hora_inicio: horaInicio,
         hora_final: horaFinal,
         observacoes: observacoes || null,
+        status,
         ativo: true,
       });
       toast.success("Agendamento criado");
@@ -128,7 +131,22 @@ export default function NovoAgendamento() {
                 />
               </div>
             </div>
-
+            <div className="space-y-2">
+              <Label htmlFor="edit-status">Status</Label>
+              <Select
+                value={status}
+                onValueChange={(v) => setStatus(v as StatusAgendamento)}
+              >
+                <SelectTrigger id="edit-status" className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="confirmado">Confirmado</SelectItem>
+                  <SelectItem value="pendente">Pendente</SelectItem>
+                  <SelectItem value="cancelado">Cancelado</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div className="space-y-2">
               <Label htmlFor="obs">Observações (opcional)</Label>
               <Input
