@@ -1,0 +1,299 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #0b1220;
+  --color-foreground: #e5eaf3;
+  --color-primary: #f59e0b;
+  --color-primary-foreground: #ffffff;
+  --color-muted: #16203a;
+  --color-muted-foreground: #8b98b3;
+  --color-border: #1f2a44;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #0b1220;
+  --foreground: #e5eaf3;
+  --card: #111a2e;
+  --card-foreground: #e5eaf3;
+  --popover: #111a2e;
+  --popover-foreground: #e5eaf3;
+  --primary: #f59e0b;
+  --primary-foreground: #ffffff;
+  --secondary: #16203a;
+  --secondary-foreground: #e5eaf3;
+  --muted: #16203a;
+  --muted-foreground: #8b98b3;
+  --accent: #16203a;
+  --accent-foreground: #e5eaf3;
+  --destructive: #ef4444;
+  --border: #1f2a44;
+  --input: #1c2740;
+  --ring: #f59e0b;
+  --chart-1: #f59e0b;
+  --chart-2: #3b82f6;
+  --chart-3: #10b981;
+  --chart-4: #a855f7;
+  --chart-5: #f43f5e;
+  --radius: 0.625rem;
+  --sidebar: #0d1526;
+  --sidebar-foreground: #cbd5e1;
+  --sidebar-primary: #f59e0b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #16203a;
+  --sidebar-accent-foreground: #e5eaf3;
+  --sidebar-border: #1f2a44;
+  --sidebar-ring: #f59e0b;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ── Scrollbars — finas e na paleta navy, em vez do padrão do SO ────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3652 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #2a3652;
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #384868;
+}
+
+/* ── React Big Calendar — overrides visuais ──────────────────────────────────
+   A lib usa classes .rbc-* para estrutura. Aqui sobrescrevemos só a aparência,
+   mantendo o layout/grid que ela controla via JavaScript.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Container principal */
+.rbc-calendar {
+  font-family: inherit;
+  border: none;
+}
+
+/* Visão mensal: remove borda externa */
+.rbc-month-view {
+  border: none;
+  border-top: 1px solid #1f2a44;
+}
+
+/* Cabeçalho das colunas (DOM, SEG, TER...) */
+.rbc-header {
+  padding: 8px 0;
+  border-bottom: 1px solid #1f2a44;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-align: center;
+  text-transform: uppercase;
+  background: #111a2e;
+}
+.rbc-header + .rbc-header {
+  border-left: 1px solid #1f2a44;
+}
+
+/* Linhas (semanas) */
+.rbc-month-row {
+  border-top: 1px solid #1f2a44;
+}
+
+/* Borda entre colunas (dias) */
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid #1f2a44;
+}
+
+/* Fundo do "hoje" — transparente (usamos o círculo no número) */
+.rbc-today {
+  background: rgba(245, 158, 11, 0.06);
+}
+
+/* Células de outros meses: fundo levemente escurecido */
+.rbc-off-range-bg {
+  background: rgba(5, 10, 20, 0.4);
+}
+
+/* Número do dia */
+.rbc-date-cell {
+  padding: 4px 6px;
+  text-align: left;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* Número de dia fora do mês atual: cinza escuro */
+.rbc-off-range .rbc-button-link {
+  color: #475569;
+}
+
+/* Número do dia HOJE: círculo laranja */
+.rbc-now .rbc-button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: #f59e0b;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Remove estilo de botão dos números de dia */
+.rbc-button-link {
+  cursor: default;
+  user-select: none;
+}
+
+/* Evento: remove o fundo azul padrão (nossa pill cuida disso) */
+.rbc-event,
+.rbc-event.rbc-selected {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+}
+.rbc-event:focus {
+  outline: none;
+}
+.rbc-event-content {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Label de horário padrão do evento — ocultamos (mostramos no pill) */
+.rbc-event-label {
+  display: none;
+}
+
+/* "+N mais" link */
+.rbc-show-more {
+  font-size: 10px;
+  color: #64748b;
+  background: transparent;
+  padding: 0 4px;
+  margin-top: 1px;
+  font-weight: normal;
+}
+.rbc-show-more:hover {
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+/* Popup do "+N mais" */
+.rbc-overlay {
+  background: #111a2e;
+  border: 1px solid #1f2a44;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.rbc-overlay-header {
+  border-bottom: 1px solid #1f2a44;
+  color: #cbd5e1;
+}
